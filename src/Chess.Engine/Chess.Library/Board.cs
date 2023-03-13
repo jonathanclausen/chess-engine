@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Chess.Engine
+namespace Chess.Library
 {
   public class Board
   {
@@ -30,7 +30,7 @@ namespace Chess.Engine
 
     public void SetupPieces()
     {
-      _squares[0][0] = new Spot()
+      //_squares[0][0] = new Spot()
     }
   }
 }

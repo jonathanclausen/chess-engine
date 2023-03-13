@@ -1,6 +1,6 @@
-﻿using Chess.Engine.Pieces;
+﻿using Chess.Library.Pieces;
 
-namespace Chess.Engine
+namespace Chess.Library
 {
   public class Spot
   {
@@ -24,6 +24,8 @@ namespace Chess.Engine
       get { return _position; }
       set { _position = value; }
     }
+
+    public bool HasPiece() => _piece != null;
 
 
   }

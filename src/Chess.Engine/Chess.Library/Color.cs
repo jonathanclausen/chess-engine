@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Chess.Engine
+namespace Chess.Library
 {
   public enum Color
   {
     White,
-    Black,
-    Blank
+    Black
   }
 }

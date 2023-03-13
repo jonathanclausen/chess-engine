@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Chess.Engine
+namespace Chess.Library
 {
   public class Position
   {
@@ -27,7 +27,7 @@ namespace Chess.Engine
     }
     public bool IsValid()
     {
-      return _x <= 7 && _x > 0 && _y <= 7 && _y > 0;
+      return _x <= 7 && _x >= 0 && _y <= 7 && _y >= 0;
     }
   }
 }

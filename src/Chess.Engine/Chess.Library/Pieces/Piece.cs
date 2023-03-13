@@ -1,4 +1,4 @@
-﻿namespace Chess.Engine.Pieces
+﻿namespace Chess.Library.Pieces
 {
   public abstract class Piece
   {
