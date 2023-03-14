@@ -6,12 +6,12 @@
 
     public override bool CanMove(Board board, Spot start, Spot end)
     {
-      if (!start.Position.IsValid() || !end.Position.IsValid())
+      // cannot move backwards
+      if (Color == Color.White && end.Position.Y <= start.Position.Y)
         return false;
+      else if (Color == Color.Black && end.Position.Y >= start.Position.Y)
 
-      if (end.Position.Y <= start.Position.Y)
-        return false;
-
+      // Cannot move to square with same colored piece
       if (end.Piece?.Color == Color)
         return false;
 
@@ -32,11 +32,12 @@
             return true;
         }
       }
-      else if (
+      bool moveIsOneDiagonal =
         Math.Abs(end.Position.X - start.Position.X) == 1
-        && Math.Abs(end.Position.Y - start.Position.Y) == 1)
+        && Math.Abs(end.Position.Y - start.Position.Y) == 1;
+      if (moveIsOneDiagonal)
       {
-        if (end.HasPiece() && end.Piece?.Color != Color)
+        if (end.HasPiece() && end.Piece.Color != Color)
           return true;
       }
       return false;
