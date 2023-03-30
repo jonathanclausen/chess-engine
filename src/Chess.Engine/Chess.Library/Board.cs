@@ -10,7 +10,7 @@ namespace Chess.Library
 {
   public class Board
   {
-    private Spot[][] _squares;
+    private Spot[,] _squares;
     private List<Piece> _pieces;
 
     public Board()
@@ -20,26 +20,56 @@ namespace Chess.Library
 
     public void Initialize()
     {
-      _squares = new Spot[8][];
       _pieces= new List<Piece>();
+      _squares = new Spot[8,8];
+      InitializeSquares();
       SetupPieces();
     }
-
+    private void InitializeSquares()
+    {
+      for (int i = 0; i < 8; i++)
+      {
+        for (int j = 0; j < 8; j++)
+        {
+          _squares[i,j] = new Spot(null, new Position(i,j));
+        }
+      }
+    }
     public Spot GetSquare(Position position)
     {
       if (position.IsValid())
-        return _squares[position.X][position.Y];
+        return _squares[position.X,position.Y];
       else
         throw new IndexOutOfRangeException($"Position is outside of the board: x={position.X}, y={position.Y}");
     }
 
     public Spot GetSpot(Position position)
     {
-      return _squares[position.X][position.Y];
+      return _squares[position.X,position.Y];
     }
     public void SetupPieces()
     {
-      //_squares[0][0] = new Spot()
+      InitializeWhite<Rook>(new Position(0, 0));
+      //InitializeWhite<Knight>(new Position(1, 0));
+      InitializeWhite<Bishop>(new Position(2, 0));
+      //InitializeWhite<Queen>(new Position(3, 0));
+      //InitializeWhite<King>(new Position(4, 0));
+      InitializeWhite<Bishop>(new Position(5, 0));
+      //InitializeWhite<Knight>(new Position(6, 0));
+      InitializeWhite<Rook>(new Position(7, 0));
+      for (int i = 0; i< 8; i++)
+        InitializeWhite<Pawn>(new Position(i, 1));
+
+      InitializeBlack<Rook>(new Position(0, 7));
+      //InitializeBlack<Knight>(new Position(1, 7));
+      InitializeBlack<Bishop>(new Position(2, 7));
+      //InitializeBlack<Queen>(new Position(3, 7));
+      //InitializeBlack<King>(new Position(4, 7));
+      InitializeBlack<Bishop>(new Position(5, 7));
+      //InitializeBlack<Knight>(new Position(6, 7));
+      InitializeBlack<Rook>(new Position(7, 7));
+      for (int i = 0; i < 8; i++)
+        InitializeBlack<Pawn>(new Position(i, 6));
     }
 
     private T InitializeWhite<T>(Position position) where T : Piece
@@ -56,8 +86,7 @@ namespace Chess.Library
     }
     private void SetPiece(Piece piece, Position position)
     {
-      Spot spot = new Spot(piece, position);
-      _squares[position.X][position.Y] = spot;
+      _squares[position.X,position.Y].Piece = piece;
     }
   }
 }

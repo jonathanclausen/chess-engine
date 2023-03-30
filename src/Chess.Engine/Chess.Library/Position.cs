@@ -19,7 +19,11 @@ namespace Chess.Library
       get { return _y; }
       set { _y = value; }
     }
-
+    public Position(Position position)
+    {
+      X = position.X;
+      Y = position.Y;
+    }
     public Position(int x, int y)
     {
       _x = x;
