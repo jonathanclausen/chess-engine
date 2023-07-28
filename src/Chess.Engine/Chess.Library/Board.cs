@@ -13,6 +13,8 @@ namespace Chess.Library
     private Spot[,] _squares;
     private List<Piece> _pieces;
 
+    public Spot[,] Squares { get => _squares; }
+
     public Board()
     {
       Initialize();

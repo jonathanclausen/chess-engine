@@ -7,4 +7,8 @@
     <Nullable>disable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Chess.Library\Chess.Library.csproj" />
+  </ItemGroup>
+
 </Project>

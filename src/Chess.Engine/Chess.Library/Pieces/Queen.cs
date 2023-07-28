@@ -51,6 +51,8 @@ namespace Chess.Library.Pieces
       if (end.HasPiece() && end.Piece.Color == Color)
         return false;
 
+      return true;
+
     }
   }
 }
